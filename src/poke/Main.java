@@ -111,7 +111,7 @@ public class Main {
         if (desiredPoke.containsKey("prev_evolution")) {
             
             JSONArray prevEvoCateg = (JSONArray) desiredPoke.get("prev_evolution");
-            JSONObject prevEvo = (JSONObject) prevEvoCateg.get(0);
+            JSONObject prevEvo = (JSONObject) prevEvoCateg.get(prevEvoCateg.size()-1);
             String prevEvoName = (String) prevEvo.get("name");
             
             EvolutionTree = prevEvoName  + " -> " + pokeName;
@@ -120,7 +120,7 @@ public class Main {
             
             if (prePrevPoke.containsKey("prev_evolution")) {
                 JSONArray prePrevEvoCateg = (JSONArray) prePrevPoke.get("prev_evolution");
-                JSONObject prePrevEvo = (JSONObject) prePrevEvoCateg.get(0);
+                JSONObject prePrevEvo = (JSONObject) prePrevEvoCateg.get(prePrevEvoCateg.size()-1);
                 String prePrevEvoName = (String) prePrevEvo.get("name");
                 
                 EvolutionTree = prePrevEvoName + " -> " + prevEvoName  + " -> " + pokeName;
@@ -137,8 +137,8 @@ public class Main {
 
             JSONObject nextNextPoke = getPokemon(nextEvoName);
             
-            if (nextNextPoke.containsKey("prev_evolution")) {
-                JSONArray nextNextEvoCate = (JSONArray) nextNextPoke.get("prev_evolution");
+            if (nextNextPoke.containsKey("next_evolution")) {
+                JSONArray nextNextEvoCate = (JSONArray) nextNextPoke.get("next_evolution");
                 JSONObject nextNextEvo = (JSONObject) nextNextEvoCate.get(0);
                 String nextNextEvoName = (String) nextNextEvo.get("name");
                 
@@ -155,7 +155,7 @@ public class Main {
         // numberOfPokemon(jsonArray);
         // pokemonWithMin10Kg(jsonArray);
         // pokemonOrderedByWeight(jsonArray);
-        pokemonEvolutiontree("Ivysaur");
+        pokemonEvolutiontree("Bulbasaur");
              
     }
 }
